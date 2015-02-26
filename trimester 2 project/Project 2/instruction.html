@@ -1,0 +1,66 @@
+<html>
+<head>
+<title> instruction </title>
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+/* @pjs globalKeyEvents = "true"; */
+PFont handwritten;
+PImage ghost1;
+PImage ghost2;
+
+void setup()
+{  
+    size( 700, 700 );  
+    background(0,0,0);
+    frameRate( 30 );
+    
+    handwritten = loadFont("handwritten");
+    ghost1 = loadImage("images/ghost1.gif");
+	ghost2 = loadImage("images/ghost2.png");
+    
+}  
+
+void draw()
+{
+    
+    image(ghost1,25,50,300,300);
+    
+    image(ghost2, 420,80,225,225);
+    
+    fill(255,255,255);
+    stroke(255,0,0);
+    strokeWeight(5);
+    rect(300,550,150,60);
+    
+    if ( mouseX > 300  && mouseX <450 && mouseY > 550 && mouseY < 610)
+       {
+         link("Project 2 G.html");
+        } 
+    
+    fill(255,255,255);
+    textFont(handwritten, 30);
+    text("Instruction",275,50);
+   
+   fill(255,255,255);
+   textFont(handwritten,20);
+   text(" 1. Control keyboards by pushing four directions", 100,400);
+   text(" 2. Try to avoid flying ghost faces as long as a character survives", 100,450);
+   text(" 3. Challenge yourself to get the highest point!", 100,500);
+   
+    fill(0,0,0);
+    textFont(handwritten, 20);
+    text("Game Start",320,585);
+    
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+<title> game result </title>
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+PFont handwritten;
+PImage over;
+int counter1;
+
+void setup()
+{
+
+size( 1000, 700 );
+frameRate( 30 );
+
+handwritten = loadFont("Handwritten");
+intro = loadImage("images/over.jpg");
+
+counter1 = (int)sessionStorage.transfercounter1;
+
+}
+
+
+void draw()
+{
+
+background(0,0,0);
+
+
+//data 	
+fill(222,0,0);
+stroke(222,0,0);
+strokeWeight(2);
+rect(400,500,200,40);
+
+fill(255,255,255);
+textFont(handwritten, 30);
+text(counter1,490,530);
+
+//restart
+fill(222,0,0);
+stroke(222,0,0);
+strokeWeight(2);
+rect(400,600,200,40);
+
+fill(255,255,255);
+textFont(handwritten,30);
+text("Restart",450,630);
+
+//cute ghost
+image(intro,350,160,300,300);
+
+//title
+fill(255,255,255);
+textFont(handwritten, 70);
+text("You Got Haunted",230,70);
+
+//link to the game
+if(mousePressed == true && mouseButton == LEFT)
+	{
+		if(mouseX > 400 && mouseX < 600 && mouseY > 600 && mouseY < 640)
+		
+		{
+			link("Project 2 G.html");
+		}
+	}
+
+	
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

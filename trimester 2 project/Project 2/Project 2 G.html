@@ -1,0 +1,258 @@
+<html>
+<head>
+<title> Project 2 G</title>
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+/* @pjs globalKeyEvents = "true"; */
+
+//images
+PImage scared;
+PImage ghost;
+PImage ghost2;
+PImage ghost3;
+PImage ghost4;
+
+
+// scared face
+int sy;
+int sx;
+
+//ghost 1
+int g1x;
+int g1xspeed;
+int moveG1xRight;
+
+//ghost 2
+int g2x;
+int g2xspeed;
+int moveG2xRight;
+
+//ghost 3
+int g3x;
+int g3xspeed;
+int moveG3xRight;
+
+//ghost 4
+int g4x;
+int g4y;
+int g4xspeed;
+int moveG4xRight;
+
+//distance between ghost & character
+int d;
+int d2;
+int d3; 
+int d4;
+
+//count
+int counter1;
+
+void setup()
+{
+
+size( 1000, 700 );
+frameRate( 30 );
+
+//scared image
+scared = loadImage("images/scared.png");
+ghost = loadImage("images/ghost face.png");
+ghost2 = loadImage("images/ghost 2.png");
+ghost3 = loadImage("images/ghost 3.png");
+
+//face valuable
+sy = 300;
+sx = 850;
+
+//g1x speed
+g1xspeed= 5;
+moveG1xRight = 1;
+
+//g2x speed
+g2xspeed= 8;
+moveG2xRight = 1;
+
+//g3x speed
+g3xspeed= 10;
+moveG3xRight = 1;
+
+//g4x speed
+g4xspeed= 5;
+moveG4xRight = 1;
+
+
+//ghosts x valuables
+g1x = 0;
+g2x = 0;
+g3x = 0;
+g4x = 500;
+
+//ghost y valuables
+g1y = random(10,500);
+g2y = random(10,500);
+g3y = random(10,500);
+g4y = random(10,500);
+
+
+//counter
+counter1 = 0;
+
+}
+
+
+void draw()
+{
+
+background(0,0,0);
+
+//face 
+image(scared,sx,sy,50,90);
+
+//face movement
+
+if (keyPressed == true) 
+	{
+		if (key == 'w')
+		{
+			sy = sy - 20;
+		}
+		
+		if(sy < 0)
+		{
+			sy = sy + 20;
+		}
+
+		if (key == 's')
+		{
+			sy = sy + 20;
+		}
+	
+		if (sy > 590)
+		{
+			sy = sy - 20;
+		}
+	}
+
+
+//ghost 1
+image(ghost,g1x,g1y,100,100);
+	
+//teleport 
+if (g1x == 0)
+	{
+		g1x = 0;
+		
+		g1xspeed = random(5,30);
+		g1y = random(10,500);
+	}
+
+
+//moving ghost one
+if(moveG1xRight == 1)
+	{
+		g1x = g1x + g1xspeed;
+	}
+if(g1x > 1000)
+{
+	g1x = 0;
+	counter1 = counter1 + 1;
+		moveG1xRight = 1;
+}
+
+
+
+
+//ghost 2
+image(ghost2,g2x,g2y,100,100);
+	
+		
+//teleport 2
+if (g2x == 0)
+	{
+		g2x = 0;
+		g2xspeed = random(5,30);
+		g2y = random(10,500);
+	}
+
+//ghost 2 movement
+if(moveG2xRight == 1)
+	{
+		g2x = g2x + g2xspeed;
+	}
+if(g2x > 1000)
+{
+	g2x = 0;
+	counter1 = counter1 + 1;
+	moveG2xRight = 1;
+}
+
+
+
+//ghost 3
+image(ghost3,g3x,g3y,400,200);
+	
+		
+//teleport 3
+if (g3x == 0)
+	{
+		g3x = 0;
+		g3xspeed = random(5,30);
+		g3y = random(10,500);
+	}
+
+//ghost 3 movement
+if(moveG3xRight == 1)
+	{
+		g3x = g3x + g3xspeed;
+	}
+if(g3x > 1000)
+{
+	g3x = 0;
+	moveG3xRight = 1;
+	counter1 = counter1 + 1;	
+}
+
+
+//counter
+
+fill(255,0,0);    
+text(counter1,30,50);	
+
+
+
+//hit
+d = (int)sqrt(sq(g1x-sx)+sq(g1y-sy));
+d2 = (int)sqrt(sq(g2x-sx)+sq(g2y-sy));
+d3 = (int)sqrt(sq(g3x-sx)+sq(g3y-sy));
+d4 = (int)sqrt(sq(g4x-sx)+sq(g4y-sy));
+
+if(d > 90 && d < 100)
+{
+	link("game result.html");
+}
+
+if(d2 > 90 && d < 100)
+{
+	link("game result.html");
+}
+
+if(d3 > 90 && d < 100)
+{
+	link("game result.html");
+}
+
+if(d4 > 90 && d < 100)
+ {
+    link("game result.html");
+ }
+
+
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

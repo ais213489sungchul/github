@@ -1,0 +1,89 @@
+<html>
+<head>
+<title> Project 2 </title>
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+PFont handwritten;
+PImage intro;
+
+void setup()
+{
+
+size( 1000, 700 );
+frameRate( 30 );
+
+handwritten = loadFont("Handwritten");
+intro = loadImage("images/intro.jpg");
+
+
+}
+
+
+void draw()
+{
+
+background(0,0,0);
+
+
+
+//start 
+fill(222,0,0);
+stroke(222,0,0);
+strokeWeight(2);
+rect(400,500,200,40);
+
+fill(255,255,255);
+textFont(handwritten, 30);
+text("Start",470,530);
+
+
+// introduction
+fill(222,0,0);
+stroke(222,0,0);
+strokeWeight(2);
+rect(400,600,200,40);
+
+fill(255,255,255);
+textFont(handwritten,30);
+text("Instruction",430,630);
+
+
+//cute ghost
+image(intro,350,160,300,300);
+
+//title
+fill(255,255,255);
+textFont(handwritten, 70);
+text("Dodge Ghosts",370,70);
+
+//link to the game
+if(mousePressed == true && mouseButton == LEFT)
+	{
+		if(mouseX > 400 && mouseX < 600 && mouseY > 500 && mouseY < 550)
+	
+		{
+			link("Project 2 G.html");
+		}
+	}
+	
+	if(mousePressed == true && mouseButton == LEFT)
+	{
+		if(mouseX > 400 && mouseX < 600 && mouseY > 600 && mouseY < 640)
+	
+		{
+			link("instruction.html");
+		}
+	}
+	
+	
+	
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>
